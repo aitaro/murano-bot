@@ -6,4 +6,6 @@
 
 ## デプロイ
 デプロイには`env.yaml`が必要
-`gcloud functions deploy hello_world --runtime python37 --trigger-http --region asia-northeast1 --env-vars-file='env.yaml'`
+```
+$ gcloud functions deploy hello_world --runtime python37 --trigger-http --region asia-northeast1 --env-vars-file='env.yaml'
+```
