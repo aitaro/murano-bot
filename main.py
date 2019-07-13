@@ -1,9 +1,8 @@
 import os
 import sys
 import tweepy
-from dotenv import load_dotenv
-
-load_dotenv()
+import yaml
+import random
 
 
 def setup_api():
@@ -12,9 +11,16 @@ def setup_api():
     return tweepy.API(auth)
 
 
-def post_tweet():
+def choice_meigen():
+    f = open("murano_tweets.yml", "r")
+    murano_tweets = yaml.load(f, Loader=yaml.FullLoader)
+    return random.choice(murano_tweets["tweet"])
+
+
+# なぜか*argsで引数長を任意にしないとdeploy時に失敗する
+def post_tweet(*args):
     api = setup_api()
-    tweet = "Hello, world!"
+    tweet = choice_meigen()
     status = api.update_status(status=tweet)
     return "Tweet Posted"
 
