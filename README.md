@@ -5,7 +5,8 @@
 
 
 ## デプロイ
-デプロイには`env.yaml`が必要
+デプロイには`env.yaml`が必要。また、gcpのmurano-bot projectのアクセス権が必要
 ```
+$ gcloud config set project murano-bot
 $ gcloud functions deploy hello_world --runtime python37 --trigger-http --region asia-northeast1 --env-vars-file='env.yaml'
 ```
